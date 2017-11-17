@@ -3,10 +3,10 @@ if [[ -z "$1" ]]
 then
     echo "要输入一个分支名(不需要hotfix前缀)"
 else
-    echo 'check :'
+    echo 'check git status:'
     UNSTAGED_DIFF="$(git status)"
     # echo "${UNSTAGED_DIFF}"
-    if [[ -z "$UNSTAGED_DIFF" ]]
+    if [[ $UNSTAGED_DIFF =~ working\ tree\ clean$ ]]
     then 
 	echo 'branch is clear'
     else
