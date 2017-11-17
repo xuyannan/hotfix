@@ -29,7 +29,7 @@ else
         echo "版本号已变化"
     else
 	while true; do
-	    read -p "${ORANGE}版本号没改，确认上线？[y / n]" yn
+	    read -p "${ORANGE}版本号没改，确认上线？[y/n]" yn
 	    case $yn in
 	        [Yy]* ) break;;
 	        [Nn]* ) exit 2;;
