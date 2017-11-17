@@ -3,6 +3,7 @@ if [[ -z "$1" ]]
 then
     echo "要输入一个分支名(不需要hotfix前缀)"
 else
+<<<<<<< HEAD
     echo '1. pull master:'
     git pull origin master
     echo '2. meger master:'
@@ -15,4 +16,11 @@ else
     git merge hotfix_$1
     echo '6. push master:'
     git push -u origin master
+=======
+    git pull origin master
+    git merge master
+    git commit
+    git checkout master
+    git merge hotfix_$1
+>>>>>>> master
 fi
