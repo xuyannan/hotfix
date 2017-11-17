@@ -8,12 +8,13 @@ else
     # echo "${UNSTAGED_DIFF}"
     if [[ $UNSTAGED_DIFF =~ working\ tree\ clean$ ]]
     then 
-	echo 'branch is clear'
+	echo 'branch is clean'
     else
-	echo '有未提交的改动'
+	echo '有未提交的改动，操作取消'
+	exit 0
     fi
-    # echo '1. pull master:'
-    # git pull origin master
+    echo '1. pull master:'
+    git pull origin master
     # echo '2. meger master:'
     # git merge master
     # echo '3. commit hotfix branch:'
