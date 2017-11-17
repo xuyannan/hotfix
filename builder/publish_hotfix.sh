@@ -1,18 +1,19 @@
 #!/bin/sh
 RED='\033[0;31m'
 GREEN='\033[0;32m'
+NC='\033[0m'
 if [[ -z "$1" ]]
 then
     echo "要输入一个分支名(不需要hotfix前缀)"
 else
-    echo 'check git status:'
+    echo '${GREEN}check git status:${NC}'
     UNSTAGED_DIFF="$(git status)"
     echo "${UNSTAGED_DIFF}"
     if [[ $UNSTAGED_DIFF =~ working\ tree\ clean$ ]]
     then 
-	echo "${GREEN}branch is clean"
+	echo "branch is clean"
     else
-	echo "${RED}有未提交的改动，操作取消"
+	echo "${RED}有未提交的改动，操作取消${NC}"
 	exit 0
     fi
     echo '1. pull master:'
