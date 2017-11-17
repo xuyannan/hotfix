@@ -21,7 +21,7 @@ else
    
     LATEST_TAG="$(git tag --sort version:refname | tail -n 1)"
  
-    DIFF="$(git diff LATEST_TAG HEAD --name-only)"
+    DIFF="$(git diff ${LATEST_TAG} HEAD --name-only)"
     echo "${DIFF}"
     if [[ $DIFF =~ version\.html$ ]]
     then
