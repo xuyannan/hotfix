@@ -19,8 +19,9 @@ else
 	exit 0
     fi
     DIFF="$(git diff --cached --name-only)"
-    if [[ $DIFF =~ version\.html]]
+    if [[ $DIFF =~ version\.html$]]
     then
+        echo "版本号已变化"
     else
 	echo "版本号没有变化，是否确认？"
     fi
