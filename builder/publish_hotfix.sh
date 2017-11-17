@@ -32,7 +32,7 @@ else
 	    read -p "版本号没改，是否确认上线？[y|n]" yn
 	    case $yn in
 	        [Yy]* ) break;;
-	        [Nn]* ) exit 2;;
+	        [Nn]* ) echo "${RED}操作取消${NC}";exit 2;;
 	        * ) echo "Please answer yes or no.";;
 	    esac
 	done
