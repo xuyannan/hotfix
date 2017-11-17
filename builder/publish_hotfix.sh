@@ -19,7 +19,7 @@ else
     fi
     echo "${GREEN}1. pull master:${NC}"
     git pull origin master
-    echo "${GREEN}2. meger master"
+    echo "${GREEN}2. meger master${NC}"
     git merge master
     # echo '3. commit hotfix branch:'
     # git commit
