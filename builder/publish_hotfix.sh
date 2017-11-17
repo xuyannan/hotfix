@@ -1,6 +1,7 @@
 #!/bin/sh
 RED='\033[0;31m'
 GREEN='\033[0;32m'
+ORANGE='\033[0;33m'
 NC='\033[0m'
 
 if [[ -z "$1" ]]
@@ -28,7 +29,7 @@ else
         echo "版本号已变化"
     else
 	while true; do
-	    read -p "版本号没改，确认上线？" yn
+	    read -p "${ORANGE}版本号没改，确认上线？[y / n]" yn
 	    case $yn in
 	        [Yy]* ) break;;
 	        [Nn]* ) exit 2;;
