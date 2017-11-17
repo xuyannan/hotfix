@@ -112,7 +112,6 @@ var getTagList = (repository) => {
     repo = repository;
     return GitTag.list(repo);
 };
-111
 var listBranch = (tags) => {
     var matchedTags = [],
         latestVersion;
