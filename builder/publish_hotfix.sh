@@ -11,20 +11,21 @@ else
     echo "${GREEN}check git status:"
     STATUS="$(git status)"
     echo "${NC}${STATUS}"
-    if [[ $UNSTAGED_DIFF =~ working\ tree\ clean$ ]]
+    if [[ $STATUS =~ working\ tree\ clean$ ]]
     then 
 	echo "${NC}branch is clean"
     else
 	echo "${RED}有未提交的改动，操作取消"
 	exit 0
     fi
+    
     DIFF="$(git diff --cached --name-only)"
     echo "${DIFF}"
     if [[ $DIFF =~ version\.html$ ]]
     then
         echo "版本号已变化"
     else
-	echo "版本号没有变化，是否确认？"
+        echo "版本号没有变化，是否确认？"
     fi
     exit 2
     echo "${GREEN}1. pull master:${NC}"
