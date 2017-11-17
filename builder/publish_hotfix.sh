@@ -8,28 +8,35 @@ then
     echo "${RED}要输入一个分支名(不需要hotfix前缀)${NC}"
     exit 1
 else
-    echo "${GREEN}check git status:"
+    echo "${GREEN}check git status:${NC}"
     STATUS="$(git status)"
     echo "${NC}${STATUS}"
     if [[ $STATUS =~ working\ tree\ clean$ ]]
     then 
 	echo "${NC}branch is clean"
     else
-	echo "${RED}有未提交的改动，操作取消"
+	echo "${RED}有未提交的改动，操作取消${NC}"
 	exit 0
     fi
    
     LATEST_TAG="$(git tag --sort version:refname | tail -n 1)"
  
+    echo "${GREEN}check version:${NC}"
     DIFF="$(git diff ${LATEST_TAG} HEAD --name-only)"
-    echo "${DIFF}"
     if [[ $DIFF =~ version\.html$ ]]
     then
         echo "版本号已变化"
     else
-        echo "版本号没有变化，是否确认？"
+	while true; do
+	    read -p "版本号没改，确认上线？" yn
+	    case $yn in
+	        [Yy]* ) break;;
+	        [Nn]* ) exit 2;;
+	        * ) echo "Please answer yes or no.";;
+	    esac
+	done
     fi
-    exit 2
+
     echo "${GREEN}1. pull master:${NC}"
     git pull origin master
     echo "${GREEN}2. meger master${NC}"
