@@ -6,14 +6,14 @@ if [[ -z "$1" ]]
 then
     echo "要输入一个分支名(不需要hotfix前缀)"
 else
-    echo '${GREEN}check git status:${NC}'
+    echo '${GREEN}check git status:'
     UNSTAGED_DIFF="$(git status)"
     echo "${UNSTAGED_DIFF}"
     if [[ $UNSTAGED_DIFF =~ working\ tree\ clean$ ]]
     then 
-	echo "branch is clean"
+	echo "${NC}branch is clean"
     else
-	echo "${RED}有未提交的改动，操作取消${NC}"
+	echo "${RED}有未提交的改动，操作取消"
 	exit 0
     fi
     echo '1. pull master:'
