@@ -18,8 +18,10 @@ else
 	echo "${RED}有未提交的改动，操作取消"
 	exit 0
     fi
-    
-    DIFF="$(git diff --cached --name-only)"
+   
+    LATEST_TAG = "$(git tag --sort version:refname | tail -n 1)"
+ 
+    DIFF="$(git diff ${LATEST} HEAD --name-only)"
     echo "${DIFF}"
     if [[ $DIFF =~ version\.html$ ]]
     then
